@@ -1,0 +1,3 @@
+1. Number of Accidents Per Month
+2. Number of Accidents vs Hour of Day
+3. Number of Accidents Per Weekday
