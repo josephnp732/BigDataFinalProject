@@ -1,5 +1,9 @@
 com/hadoop/finalProject/Q1/ComparatorClass.class
 com/hadoop/finalProject/Q2/ReducerClass.class
 com/hadoop/finalProject/Q2/MapperClass.class
+com/hadoop/finalProject/Q3/DriverClass.class
+com/hadoop/finalProject/Q3/MapperClass.class
+com/hadoop/finalProject/Q3/ReducerClass.class
+com/hadoop/finalProject/Q3/ComparatorClass.class
 com/hadoop/finalProject/Q2/DriverClass.class
 com/hadoop/finalProject/Q2/ComparatorClass.class
