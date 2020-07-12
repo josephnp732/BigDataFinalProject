@@ -10,5 +10,8 @@ hadoop fs -put ~/Downloads /
 # Execute Question 1
 hadoop jar /Users/christy/Downloads/Projects/BigDataFinalProject/target/BigDataFinalProject-1.0-SNAPSHOT.jar com.hadoop.finalProject.Q1.DriverClass /Accidents.csv /Q1_Output
 
+# Execute Question 2
+hadoop jar /Users/christy/Downloads/Projects/BigDataFinalProject/target/BigDataFinalProject-1.0-SNAPSHOT.jar com.hadoop.finalProject.Q2.DriverClass /Accidents.csv /Q2_Output
+
 
 
