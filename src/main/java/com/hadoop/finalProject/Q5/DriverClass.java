@@ -1,4 +1,4 @@
-package com.hadoop.finalProject.Q3;
+package com.hadoop.finalProject.Q5;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
@@ -17,7 +17,7 @@ public class DriverClass {
     public static void main(String[] args) throws IOException, InterruptedException, ClassNotFoundException {
         Configuration conf = new Configuration();
 
-        Job job = Job.getInstance(conf, "NumberOfAccidentsPerWeekday");
+        Job job = Job.getInstance(conf, "NumberOfAccidentsPerState");
 
         FileInputFormat.addInputPath(job, new Path(args[0]));
         FileOutputFormat.setOutputPath(job, new Path(args[1]));
@@ -31,9 +31,6 @@ public class DriverClass {
 
         Path outDir = new Path(args[1]);
         FileOutputFormat.setOutputPath(job, outDir);
-
-        // Comparator
-        job.setSortComparatorClass(ComparatorClass.class);
 
         // Mapper
         job.setMapperClass(MapperClass.class);

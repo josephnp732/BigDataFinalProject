@@ -1,4 +1,17 @@
+Analysis By Time:
+
 1. Number of Accidents Per Month
 2. Number of Accidents vs Hour of Day
 3. Number of Accidents Per Weekday
 4. Number of Accidents Per Year
+
+Analysis By Location.
+
+5. Number of Accidents Per State
+6. Top 10 Accident Prone States
+7. State - Cities -> Inverted Index
+
+Other Analytics:
+
+8. Average Air Pressure When Accident Happened (SecondarySorted)
+
