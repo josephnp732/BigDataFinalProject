@@ -15,6 +15,6 @@ Analysis By Location.
 
 Other Analytics:
 
-8. Average Air Pressure When Accident Happened (SecondarySorted)
+8. Average, Min and Max Temperature per Severity
 9.
 

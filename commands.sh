@@ -29,3 +29,6 @@ hadoop jar /Users/christy/Downloads/Projects/BigDataFinalProject/target/BigDataF
 
 # State - Cities = Inverted Index
 hadoop jar /Users/christy/Downloads/Projects/BigDataFinalProject/target/BigDataFinalProject-1.0-SNAPSHOT.jar com.hadoop.finalProject.Q7.DriverClass /Accidents.csv /Q7_Output
+
+# Average, Min and Max Temperature per Severity
+hadoop jar /Users/christy/Downloads/Projects/BigDataFinalProject/target/BigDataFinalProject-1.0-SNAPSHOT.jar com.hadoop.finalProject.Q8.DriverClass /Accidents.csv /Q8_Output

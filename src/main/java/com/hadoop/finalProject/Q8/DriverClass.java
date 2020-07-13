@@ -1,10 +1,9 @@
-package com.hadoop.finalProject.Q7;
+package com.hadoop.finalProject.Q8;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IntWritable;
-import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
@@ -17,7 +16,7 @@ public class DriverClass {
     public static void main(String[] args) throws IOException, InterruptedException, ClassNotFoundException {
         Configuration conf = new Configuration();
 
-        Job job = Job.getInstance(conf, "NumberOfAccidentsPerState");
+        Job job = Job.getInstance(conf, "MaxAvePressurePerSeverity");
 
         FileInputFormat.addInputPath(job, new Path(args[0]));
         FileOutputFormat.setOutputPath(job, new Path(args[1]));
@@ -33,14 +32,14 @@ public class DriverClass {
         // Mapper
         job.setMapperClass(MapperClass.class);
 
-        job.setMapOutputKeyClass(Text.class);
-        job.setMapOutputValueClass(Text.class);
+        job.setMapOutputKeyClass(IntWritable.class);
+        job.setMapOutputValueClass(TempWritable.class);
 
         // Reducer
         job.setReducerClass(ReducerClass.class);
 
-        job.setOutputKeyClass(Text.class);
-        job.setOutputValueClass(IntWritable.class);
+        job.setOutputKeyClass(IntWritable.class);
+        job.setOutputValueClass(TempWritable.class);
 
         FileSystem fs = FileSystem.get(job.getConfiguration());
         if(fs.exists(outDir)){
@@ -53,4 +52,5 @@ public class DriverClass {
     }
 
 }
+
 
