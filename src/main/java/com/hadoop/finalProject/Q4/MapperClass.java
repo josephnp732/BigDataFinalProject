@@ -12,31 +12,29 @@ import java.util.Date;
 
 public class MapperClass extends Mapper<LongWritable, Text, Text, IntWritable> {
 
-    Text hour = new Text();
+    Text sideOfRoad = new Text();
     IntWritable one = new IntWritable(1);
-
-    SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    SimpleDateFormat format = new SimpleDateFormat("yyyy");
 
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
 
        String []tokens =  value.toString().split(",");
-       Date date = new Date();
-
        if(!tokens[0].equals("ID")) {
-           String timeStamp = tokens[4];
+          String side = tokens[14];
+          if(!side.equals(" ")) {
 
-           try {
-               date = parser.parse(timeStamp);
-           } catch (ParseException e) {
-               e.printStackTrace();
-           }
+              if(side.equals("L")) {
+                  side = "Left";
+              } else {
+                  side = "Right";
+              }
+
+              sideOfRoad.set(side);
+              context.write(sideOfRoad, one);
+          }
        }
 
-       hour.set(format.format(date));
-
-       context.write(hour, one);
+       return;
 
     }
 }

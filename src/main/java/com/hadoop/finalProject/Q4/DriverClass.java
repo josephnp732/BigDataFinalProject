@@ -32,9 +32,6 @@ public class DriverClass {
         Path outDir = new Path(args[1]);
         FileOutputFormat.setOutputPath(job, outDir);
 
-        // Comparator
-        job.setSortComparatorClass(ComparatorClass.class);
-
         // Mapper
         job.setMapperClass(MapperClass.class);
 
