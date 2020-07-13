@@ -28,10 +28,13 @@ hadoop jar /Users/christy/Downloads/Projects/BigDataFinalProject/target/BigDataF
 hadoop jar /Users/christy/Downloads/Projects/BigDataFinalProject/target/BigDataFinalProject-1.0-SNAPSHOT.jar com.hadoop.finalProject.Q6.DriverClass /Q5_Output/part-r-00000 /Q6_Output &&
 
 # State - Cities = Inverted Index
-hadoop jar /Users/christy/Downloads/Projects/BigDataFinalProject/target/BigDataFinalProject-1.0-SNAPSHOT.jar com.hadoop.finalProject.Q7.DriverClass /Accidents.csv /Q7_Output
+hadoop jar /Users/christy/Downloads/Projects/BigDataFinalProject/target/BigDataFinalProject-1.0-SNAPSHOT.jar com.hadoop.finalProject.Q7.DriverClass /Accidents.csv /Q7_Output &&
 
 # Average, Min and Max Temperature per Severity
-hadoop jar /Users/christy/Downloads/Projects/BigDataFinalProject/target/BigDataFinalProject-1.0-SNAPSHOT.jar com.hadoop.finalProject.Q8.DriverClass /Accidents.csv /Q8_Output
+hadoop jar /Users/christy/Downloads/Projects/BigDataFinalProject/target/BigDataFinalProject-1.0-SNAPSHOT.jar com.hadoop.finalProject.Q8.DriverClass /Accidents.csv /Q8_Output &&
 
-# Count of Accidents Per State Per Year (SecondarySorted with 5 Partitions)
-hadoop jar /Users/christy/Downloads/Projects/BigDataFinalProject/target/BigDataFinalProject-1.0-SNAPSHOT.jar com.hadoop.finalProject.Q9.DriverClass /Accidents.csv /Q9_Output
+# Count of Accidents Per State Per Year (SecondarySorted with 5 Partitions - Per Year)
+hadoop jar /Users/christy/Downloads/Projects/BigDataFinalProject/target/BigDataFinalProject-1.0-SNAPSHOT.jar com.hadoop.finalProject.Q9.DriverClass /Accidents.csv /Q9_Output &&
+
+# Effects of Wind Speed Per City, State - Recommendation System (RMS)
+hadoop jar /Users/christy/Downloads/Projects/BigDataFinalProject/target/BigDataFinalProject-1.0-SNAPSHOT.jar com.hadoop.finalProject.Q10.DriverClass /Accidents.csv /Q10_Output

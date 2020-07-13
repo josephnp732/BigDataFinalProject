@@ -6,6 +6,7 @@ Analysis By Time:
 
 Other Analytics:
 4. Side of the Road Percentage
+9. Count of Accidents Per State Per Year (SecondarySorted with 5 Partitions)
 
 Analysis By Location.
 
@@ -16,5 +17,5 @@ Analysis By Location.
 Weather Conditions:
 
 8. Average, Min and Max Temperature per Severity
-9. Count of Accidents Per State Per Year (SecondarySorted with 5 Partitions)
+10. Effects of Wind Speed Per City, State - Recommendation System (w/ Combiner and Partitioner)
 
