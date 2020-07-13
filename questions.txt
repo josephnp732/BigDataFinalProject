@@ -13,8 +13,8 @@ Analysis By Location.
 6. Top 10 Accident Prone States
 7. State - Cities -> Inverted Index
 
-Other Analytics:
+Weather Conditions:
 
 8. Average, Min and Max Temperature per Severity
-9.
+9. Count of Accidents Per State Per Year (SecondarySorted with 5 Partitions)
 
