@@ -1,10 +1,12 @@
 com/hadoop/finalProject/Q1/ReducerClass.class
 com/hadoop/finalProject/Q3/DriverClass.class
+com/hadoop/finalProject/Q12/DriverClass.class
 com/hadoop/finalProject/Q3/ReducerClass.class
 com/hadoop/finalProject/Q8/DriverClass.class
 com/hadoop/finalProject/Q5/ReducerClass.class
 com/hadoop/finalProject/Q10/ReducerClass.class
 com/hadoop/finalProject/Q8/TempWritable.class
+com/hadoop/finalProject/Q12/ReducerClass.class
 com/hadoop/finalProject/Q11/DriverClass.class
 com/hadoop/finalProject/Q6/MapperClass.class
 com/hadoop/finalProject/Q11/MainMapperClass.class
@@ -26,6 +28,7 @@ com/hadoop/finalProject/Q4/ReducerClass.class
 com/hadoop/finalProject/Q10/WritableClass.class
 com/hadoop/finalProject/Q9/CompositeKeyComparator.class
 com/hadoop/finalProject/Q6/ReducerClass.class
+com/hadoop/finalProject/Q12/MapperClass.class
 com/hadoop/finalProject/Q11/ReducerClass.class
 com/hadoop/finalProject/Q3/MapperClass.class
 com/hadoop/finalProject/Q9/MapperClass.class

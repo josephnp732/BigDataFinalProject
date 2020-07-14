@@ -43,3 +43,5 @@ hadoop jar /Users/christy/Downloads/Projects/BigDataFinalProject/target/BigDataF
 hadoop fs -put ~/Downloads/State_Data.csv / &&
 hadoop jar /Users/christy/Downloads/Projects/BigDataFinalProject/target/BigDataFinalProject-1.0-SNAPSHOT.jar com.hadoop.finalProject.Q11.DriverClass /Accidents.csv /State_Data.csv /Q11_Output
 
+# Percentage Per US Timezone
+hadoop jar /Users/christy/Downloads/Projects/BigDataFinalProject/target/BigDataFinalProject-1.0-SNAPSHOT.jar com.hadoop.finalProject.Q12.DriverClass /Accidents.csv /Q12_Output
