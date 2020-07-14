@@ -7,6 +7,7 @@ Analysis By Time:
 Other Analytics:
 4. Side of the Road Percentage
 9. Count of Accidents Per State Per Year (SecondarySorted with 5 Partitions)
+11. Divide file into partitions divided by state
 
 Analysis By Location.
 
