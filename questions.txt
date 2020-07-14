@@ -20,4 +20,5 @@ Weather Conditions:
 8. Average, Min and Max Temperature per Severity
 10. Effects of Wind Speed Per City, State - Recommendation System (w/ Combiner and Partitioner)
 12. Percentages based on timezone
+13. Proximity to Traffic Object (Percentage / per all traffic)
 
