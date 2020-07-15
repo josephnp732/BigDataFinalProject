@@ -40,7 +40,7 @@ hadoop jar /Users/christy/Downloads/Projects/BigDataFinalProject/target/BigDataF
 # Effects of Wind Speed Per City, State - Recommendation System (RMS)
 hadoop jar /Users/christy/Downloads/Projects/BigDataFinalProject/target/BigDataFinalProject-1.0-SNAPSHOT.jar com.hadoop.finalProject.Q10.DriverClass /Accidents.csv /Q10_Output &&
 
-# Divide file into partitions divided by state
+# Divide file into partitions divided by state [Run on GCP Google DataProc]
 hadoop jar /Users/christy/Downloads/Projects/BigDataFinalProject/target/BigDataFinalProject-1.0-SNAPSHOT.jar com.hadoop.finalProject.Q11.DriverClass /Accidents.csv /State_Data.csv /Q11_Output &&
 
 # Percentage Per US Timezone
