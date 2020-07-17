@@ -1,4 +1,4 @@
-package com.hadoop.finalProject.Q9;
+package com.hadoop.finalProject.Q10;
 
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;

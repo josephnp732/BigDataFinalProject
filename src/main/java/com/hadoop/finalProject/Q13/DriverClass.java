@@ -1,4 +1,4 @@
-package com.hadoop.finalProject.Q4;
+package com.hadoop.finalProject.Q13;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
@@ -17,12 +17,10 @@ public class DriverClass {
     public static void main(String[] args) throws IOException, InterruptedException, ClassNotFoundException {
         Configuration conf = new Configuration();
 
-        Job job = Job.getInstance(conf, "PercentagePerSideOfRoad");
+        Job job = Job.getInstance(conf, "ProximityToTrafficObject");
 
         FileInputFormat.addInputPath(job, new Path(args[0]));
         FileOutputFormat.setOutputPath(job, new Path(args[1]));
-
-        //job.getConfiguration().set("mapreduce.output.textoutputformat.recordseparator","\t");
 
         // Driver Class
         job.setJarByClass(DriverClass.class);

@@ -3,19 +3,19 @@ MapReduce Question Set:
 1. Number of Accidents Per Month
 2. Number of Accidents vs Hour of Day
 3. Number of Accidents Per Weekday
-4. Number of Accidents Per State
-5. Top 10 Accident Prone States
-6. State - Cities -> Inverted Index
-7. Average, Min and Max Temperature per Severity
-8. Count of Accidents Per State Per Year (SecondarySorted with 5 Partitions)
-9. Divide file into partitions divided by state [Execute on GCP DataProc]
+4. Side of the Road Percentage
+5. Number of Accidents Per State
+6. Top 10 Accident Prone States
+7. State - Cities -> Inverted Index
+8. Average, Min and Max Temperature per Severity
+9. Count of Accidents Per State Per Year (SecondarySorted with 5 Partitions)
+11. Divide file into partitions divided by state [Execute on GCP DataProc]
 10. Effects of Wind Speed Per City, State - Recommendation System (w/ Combiner and Partitioner)
-11. Proximity to Traffic Object (Percentage / per all traffic)
+12. Percentages based on timezone
+13. Proximity to Traffic Object (Percentage / per all traffic)
 
 HIVE Question Set:
 
-1. Number of Accidents per timezone
-2. Number of Accidents per side of road
-3. Top 10 -> Weather Condition vs Number of Accident
+# Create Table
 
-MongoDB MapReduce (Atlas):
+CREATE TABLE accidents()

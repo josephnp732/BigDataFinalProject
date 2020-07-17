@@ -1,38 +1,34 @@
 package com.hadoop.finalProject.Q7;
 
 import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
 import java.io.IOException;
 
-public class MapperClass extends Mapper<Object, Text, IntWritable, TempWritable> {
+public class MapperClass extends Mapper<LongWritable, Text, Text, Text> {
 
-    IntWritable sev = new IntWritable();
-    TempWritable tempWritable = new TempWritable();
+    Text state = new Text();
+    Text cities = new Text();
 
     @Override
-    protected void map(Object key, Text value, Context context) throws IOException, InterruptedException {
+    protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
 
-        String[] tokens = value.toString().split(",");
+       String []tokens =  value.toString().split(",");
 
-        if (!tokens[0].equals("ID")) {
+       String cityString = "";
+       String stateString = "";
 
-            if(tokens[3].isEmpty() || tokens[23].isEmpty() || tokens[3].equals(" ") || tokens[26].equals(" ")) {
-                return;
-            }
+       if(!tokens[0].equals("ID")) {
+           cityString = tokens[15];
+           stateString = tokens[17];
+       }
 
-            int severity = Integer.parseInt(tokens[3]);
-            double temperature = Double.parseDouble(tokens[23]);
+       state.set(stateString);
+       cities.set(cityString);
 
-            tempWritable.setAverageTemp(temperature);
-            tempWritable.setMaxTemp(temperature);
-            tempWritable.setMinTemp(temperature);
-            tempWritable.setCount(1);
+       context.write(state, cities);
 
-            sev.set(severity);
-
-            context.write(sev, tempWritable);
-        }
     }
 }

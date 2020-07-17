@@ -1,4 +1,4 @@
-package com.hadoop.finalProject.Q11;
+package com.hadoop.finalProject.Q13;
 
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
@@ -6,6 +6,10 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class MapperClass extends Mapper<LongWritable, Text, Text, IntWritable> {
 

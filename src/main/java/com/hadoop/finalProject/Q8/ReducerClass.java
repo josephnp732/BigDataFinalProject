@@ -1,30 +1,41 @@
 package com.hadoop.finalProject.Q8;
 
 import org.apache.hadoop.io.IntWritable;
-import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
 import java.io.IOException;
 
-public class ReducerClass extends Reducer<CompositeKeyWritable, IntWritable, Text, IntWritable> {
+public class ReducerClass extends Reducer<IntWritable, TempWritable, IntWritable, TempWritable> {
 
-    Text text = new Text();
-    IntWritable count = new IntWritable();
-    StateMap stateMap = new StateMap();
+    TempWritable newTuple = new TempWritable();
 
     @Override
-    protected void reduce(CompositeKeyWritable key, Iterable<IntWritable> values, Context context) throws IOException, InterruptedException {
+    protected void reduce(IntWritable key, Iterable<TempWritable> values, Context context) throws IOException, InterruptedException {
 
-        int sum = 0;
+        double maxTemp = Double.MIN_VALUE;
+        double minTemp = Double.MAX_VALUE;
+        long count = 0;
+        double sumOfTemps = 0.0;
 
-        for(IntWritable v : values) {
-            sum += v.get();
+        for (TempWritable tuple : values) {
+
+            sumOfTemps += tuple.getAverageTemp() * tuple.getCount();
+            count += tuple.getCount();
+
+            if(tuple.getMinTemp() < minTemp) {
+                minTemp = tuple.getMinTemp();
+            }
+
+            if(tuple.getMaxTemp() > maxTemp) {
+                maxTemp = tuple.getMaxTemp();
+            }
         }
 
-        text.set(stateMap.getStateFromAbbr(key.getState())+ " - in Year - " + key.getYear() + " : ");
-        count.set(sum);
+        newTuple.setAverageTemp(sumOfTemps / count);
+        newTuple.setMaxTemp(maxTemp);
+        newTuple.setMinTemp(minTemp);
+        newTuple.setCount(count);
 
-        context.write(text, count);
-
+        context.write(key, newTuple);
     }
 }

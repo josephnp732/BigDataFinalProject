@@ -1,6 +1,7 @@
 package com.hadoop.finalProject.Q1;
 
 import org.apache.hadoop.io.Text;
+import org.apache.hadoop.io.WritableComparable;
 import org.apache.hadoop.io.WritableComparator;
 
 import java.text.ParseException;

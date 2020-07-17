@@ -1,30 +1,40 @@
 package com.hadoop.finalProject.Q6;
 
+import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
 import java.io.IOException;
-import java.util.HashSet;
+import java.util.Comparator;
+import java.util.TreeMap;
 
-public class ReducerClass extends Reducer<Text, Text, Text, Text> {
+public class ReducerClass extends Reducer<NullWritable, Text, NullWritable, Text> {
 
-    HashSet<String> hs = new HashSet<>();
+    static class DescOrder implements Comparator<Integer> {
+
+        @Override
+        public int compare(Integer o1, Integer o2) {
+            return o2.compareTo(o1);
+        }
+    }
+
+    private TreeMap<Integer, Text> countMap = new TreeMap<>(new DescOrder());
 
     @Override
-    protected void reduce(Text key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
+    protected void reduce(NullWritable key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
+        for (Text value : values) {
 
-        hs.clear();
-        StringBuffer sb = new StringBuffer("");
+            String[] tokens = value.toString().split("\t");
+            int countOfStates = Integer.parseInt(tokens[1]);
 
-        for(Text v: values){
-            hs.add(v.toString());
+            countMap.put(countOfStates, new Text(value));
+
+
+            if (countMap.size() > 10)
+                countMap.remove(countMap.lastKey());
         }
 
-        for(String v: hs) {
-            sb.append(v);
-            sb.append(" | ");
-        }
-
-        context.write(key, new Text(sb.toString()));
+        for (Text t : countMap.values())
+            context.write(NullWritable.get(), t);
     }
 }
