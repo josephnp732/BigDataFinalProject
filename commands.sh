@@ -10,6 +10,13 @@ hadoop fs -put ~/Downloads/State_Data.csv /
 
 #-----------------------------------------------#
 
+# Hive config
+hadoop fs -mkdir /hive &&
+hadoop fs -mkdir /hive/warehouse &&
+hadoop fs -put ~/Downloads/Accidents_hive.csv / &&
+
+#-----------------------------------------------#
+
 # Number of Accidents Per Month
 hadoop jar /Users/christy/Downloads/Projects/BigDataFinalProject/target/BigDataFinalProject-1.0-SNAPSHOT.jar com.hadoop.finalProject.Q1.DriverClass /Accidents.csv /Q1_Output &&
 
@@ -50,3 +57,7 @@ hadoop jar /Users/christy/Downloads/Projects/BigDataFinalProject/target/BigDataF
 hadoop jar /Users/christy/Downloads/Projects/BigDataFinalProject/target/BigDataFinalProject-1.0-SNAPSHOT.jar com.hadoop.finalProject.Q13.DriverClass /Accidents.csv /Q13_Output
 
 #-----------------------------------------------#
+
+# Hive Queries
+
+# 1. Number of Accidents Per Time Zone

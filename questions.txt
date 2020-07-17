@@ -15,3 +15,7 @@ MapReduce Question Set:
 13. Proximity to Traffic Object (Percentage / per all traffic)
 
 HIVE Question Set:
+
+# Create Table
+
+CREATE TABLE accidents()
