@@ -7,24 +7,21 @@ import org.apache.hadoop.mapreduce.Reducer;
 
 import java.io.IOException;
 
-public class ReducerClass extends Reducer<Text, IntWritable, Text, Text> {
+public class ReducerClass extends Reducer<Text, IntWritable, Text, LongWritable> {
 
-    Text percentage = new Text();
+    LongWritable sum = new LongWritable();
 
     @Override
     protected void reduce(Text key, Iterable<IntWritable> values, Context context) throws IOException, InterruptedException {
 
-        int count = 0;
+        long count = 0;
 
         for(IntWritable v : values) {
             count += v.get();
         }
 
-        int total = 3513617;  // total number of records
+        sum.set(count);
 
-        double perc = ((double) count / total) * 100;
-        percentage.set(String.format("%.2f", perc) + "%");
-
-        context.write(key, percentage);
+        context.write(key, sum);
     }
 }

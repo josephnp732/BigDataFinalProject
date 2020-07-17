@@ -1,4 +1,4 @@
-package com.hadoop.finalProject.Q8;
+package com.hadoop.finalProject.Q7;
 
 import org.apache.hadoop.io.Writable;
 

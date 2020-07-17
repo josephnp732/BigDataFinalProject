@@ -1,37 +1,35 @@
 package com.hadoop.finalProject.Q9;
 
-import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
-public class MapperClass extends Mapper<Object, Text, CompositeKeyWritable, IntWritable> {
+public class MapperClass extends Mapper<LongWritable, Text, Text, WritableClass> {
 
-    SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    SimpleDateFormat formater = new SimpleDateFormat("yyyy");
+    Text cityState = new Text();
+    WritableClass wS = new WritableClass();
 
     @Override
-    protected void map(Object key, Text value, Context context) throws IOException, InterruptedException {
+    protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
 
         String []tokens = value.toString().split(",");
 
-        if(tokens[4].isEmpty() || tokens[17].isEmpty() || tokens[4].equals(" ") || tokens[17].equals(" ") || tokens[0].equals("ID")) {
+        if(tokens[29].isEmpty() || tokens[15].isEmpty() || tokens[17].isEmpty() || tokens[29].equals(" ") || tokens[15].equals(" ") || tokens[17].equals(" ") || tokens[0].equals("ID")) {
             return;
         }
 
-        String stateString = tokens[17];
-        String year = null;
-        try {
-            year = formater.format(parser.parse(tokens[4]));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        String state = tokens[17];
+        Double windSpeed = Double.parseDouble(tokens[29]);
+        String city = tokens[15];
 
-        CompositeKeyWritable cKW = new CompositeKeyWritable(stateString, year);
+        cityState.set(city + "," + state);
 
-        context.write(cKW, new IntWritable(1));
+        wS.setAverageWindSpeed(windSpeed);
+        wS.setTotalCount(1);
+
+        context.write(cityState, wS);
+
     }
 }

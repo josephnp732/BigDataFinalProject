@@ -1,30 +1,34 @@
 package com.hadoop.finalProject.Q9;
 
-import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
 import java.io.IOException;
 
-public class ReducerClass extends Reducer<CompositeKeyWritable, IntWritable, Text, IntWritable> {
+public class ReducerClass extends Reducer<Text, WritableClass, Text, WritableClass> {
 
-    Text text = new Text();
-    IntWritable count = new IntWritable();
-    StateMap stateMap = new StateMap();
+    WritableClass newTuple = new WritableClass();
 
     @Override
-    protected void reduce(CompositeKeyWritable key, Iterable<IntWritable> values, Context context) throws IOException, InterruptedException {
+    protected void reduce(Text key, Iterable<WritableClass> values, Context context) throws IOException, InterruptedException {
 
-        int sum = 0;
+        long total = 0;
+        double sum = 0.0;
 
-        for(IntWritable v : values) {
-            sum += v.get();
+        for(WritableClass v : values) {
+            total += v.getTotalCount();
+            sum += v.getAverageWindSpeed();
         }
 
-        text.set(stateMap.getStateFromAbbr(key.getState())+ " - in Year - " + key.getYear() + " : ");
-        count.set(sum);
+        double averageWS = sum / total;
 
-        context.write(text, count);
+        double rms = Math.sqrt(Math.pow(sum, 2) / total);
+
+        newTuple.setTotalCount(total);
+        newTuple.setAverageWindSpeed(averageWS);
+        newTuple.setRms(rms);
+
+        context.write(key, newTuple);
 
     }
 }

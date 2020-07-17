@@ -1,27 +1,40 @@
 package com.hadoop.finalProject.Q5;
 
-import org.apache.hadoop.io.IntWritable;
-import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
 import java.io.IOException;
+import java.util.Comparator;
+import java.util.TreeMap;
 
-public class ReducerClass extends Reducer<Text, IntWritable, Text, LongWritable> {
+public class ReducerClass extends Reducer<NullWritable, Text, NullWritable, Text> {
 
-    LongWritable sum = new LongWritable();
+    static class DescOrder implements Comparator<Integer> {
+
+        @Override
+        public int compare(Integer o1, Integer o2) {
+            return o2.compareTo(o1);
+        }
+    }
+
+    private TreeMap<Integer, Text> countMap = new TreeMap<>(new DescOrder());
 
     @Override
-    protected void reduce(Text key, Iterable<IntWritable> values, Context context) throws IOException, InterruptedException {
+    protected void reduce(NullWritable key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
+        for (Text value : values) {
 
-        long count = 0;
+            String[] tokens = value.toString().split("\t");
+            int countOfStates = Integer.parseInt(tokens[1]);
 
-        for(IntWritable v : values) {
-            count += v.get();
+            countMap.put(countOfStates, new Text(value));
+
+
+            if (countMap.size() > 10)
+                countMap.remove(countMap.lastKey());
         }
 
-        sum.set(count);
-
-        context.write(key, sum);
+        for (Text t : countMap.values())
+            context.write(NullWritable.get(), t);
     }
 }

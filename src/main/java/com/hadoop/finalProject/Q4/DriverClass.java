@@ -17,7 +17,7 @@ public class DriverClass {
     public static void main(String[] args) throws IOException, InterruptedException, ClassNotFoundException {
         Configuration conf = new Configuration();
 
-        Job job = Job.getInstance(conf, "PercentagePerSideOfRoad");
+        Job job = Job.getInstance(conf, "NumberOfAccidentsPerState");
 
         FileInputFormat.addInputPath(job, new Path(args[0]));
         FileOutputFormat.setOutputPath(job, new Path(args[1]));

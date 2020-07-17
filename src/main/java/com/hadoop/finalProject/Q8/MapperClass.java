@@ -5,34 +5,33 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
-public class MapperClass extends Mapper<Object, Text, IntWritable, TempWritable> {
+public class MapperClass extends Mapper<Object, Text, CompositeKeyWritable, IntWritable> {
 
-    IntWritable sev = new IntWritable();
-    TempWritable tempWritable = new TempWritable();
+    SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    SimpleDateFormat formater = new SimpleDateFormat("yyyy");
 
     @Override
     protected void map(Object key, Text value, Context context) throws IOException, InterruptedException {
 
-        String[] tokens = value.toString().split(",");
+        String []tokens = value.toString().split(",");
 
-        if (!tokens[0].equals("ID")) {
-
-            if(tokens[3].isEmpty() || tokens[23].isEmpty() || tokens[3].equals(" ") || tokens[26].equals(" ")) {
-                return;
-            }
-
-            int severity = Integer.parseInt(tokens[3]);
-            double temperature = Double.parseDouble(tokens[23]);
-
-            tempWritable.setAverageTemp(temperature);
-            tempWritable.setMaxTemp(temperature);
-            tempWritable.setMinTemp(temperature);
-            tempWritable.setCount(1);
-
-            sev.set(severity);
-
-            context.write(sev, tempWritable);
+        if(tokens[4].isEmpty() || tokens[17].isEmpty() || tokens[4].equals(" ") || tokens[17].equals(" ") || tokens[0].equals("ID")) {
+            return;
         }
+
+        String stateString = tokens[17];
+        String year = null;
+        try {
+            year = formater.format(parser.parse(tokens[4]));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        CompositeKeyWritable cKW = new CompositeKeyWritable(stateString, year);
+
+        context.write(cKW, new IntWritable(1));
     }
 }
