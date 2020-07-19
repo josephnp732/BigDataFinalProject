@@ -50,14 +50,7 @@ hadoop jar /Users/christy/Downloads/Projects/BigDataFinalProject/target/BigDataF
 # Divide file into partitions divided by state [Run on GCP Google DataProc]
 hadoop jar /Users/christy/Downloads/Projects/BigDataFinalProject/target/BigDataFinalProject-1.0-SNAPSHOT.jar com.hadoop.finalProject.Q11.DriverClass /Accidents.csv /State_Data.csv /Q11_Output &&
 
-# Percentage Per US Timezone
-hadoop jar /Users/christy/Downloads/Projects/BigDataFinalProject/target/BigDataFinalProject-1.0-SNAPSHOT.jar com.hadoop.finalProject.Q12.DriverClass /Accidents.csv /Q12_Output &&
-
 # Proximity to Traffic Object (Percentage / per all traffic)
-hadoop jar /Users/christy/Downloads/Projects/BigDataFinalProject/target/BigDataFinalProject-1.0-SNAPSHOT.jar com.hadoop.finalProject.Q13.DriverClass /Accidents.csv /Q13_Output
+hadoop jar /Users/christy/Downloads/Projects/BigDataFinalProject/target/BigDataFinalProject-1.0-SNAPSHOT.jar com.hadoop.finalProject.Q12.DriverClass /Accidents.csv /Q12_Output
 
 #-----------------------------------------------#
-
-# Hive Queries
-
-# 1. Number of Accidents Per Time Zone

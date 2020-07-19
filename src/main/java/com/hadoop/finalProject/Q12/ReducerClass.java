@@ -22,7 +22,7 @@ public class ReducerClass extends Reducer<Text, IntWritable, Text, Text> {
         int total = 3513617;  // total number of records
 
         double perc = ((double) count / total) * 100;
-        percentage.set(String.format("%.2f", perc) + "%");
+        percentage.set("\t" + String.format("%.2f", perc) + "%");
 
         context.write(key, percentage);
     }
