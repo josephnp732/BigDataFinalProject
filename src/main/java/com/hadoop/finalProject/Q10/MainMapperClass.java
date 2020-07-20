@@ -1,4 +1,4 @@
-package com.hadoop.finalProject.Q11;
+package com.hadoop.finalProject.Q10;
 
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
