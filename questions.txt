@@ -17,3 +17,6 @@ HIVE Question Set:
 1. Number of Accidents per timezone
 2. Number of Accidents per Severity per State (Partitioning)
 3. Top 10 - Weather Condition vs Number of. Accident
+
+Pig Question Set:
+
