@@ -1,12 +1,24 @@
 #!/bin/bash
 
+# Generate JAR file
+mvn package &&
+
+#-----------------------------------------------#
+
 # Start Hadoop
-cd /usr/local/opt/hadoop/sbin
+cd /usr/local/opt/hadoop/sbin &&
 ./start-dfs.sh
 
 # Put files into HDFS
 hadoop fs -put ~/Downloads/Accidents.csv / &&
-hadoop fs -put ~/Downloads/State_Data.csv /
+hadoop fs -put ~/Downloads/State_Data.csv / &&
+
+#-----------------------------------------------#
+
+# Hive config
+hadoop fs -mkdir /hive &&
+hadoop fs -mkdir /hive/warehouse &&
+hadoop fs -put ~/Downloads/Accidents_hive.csv / &&
 
 #-----------------------------------------------#
 
@@ -37,16 +49,10 @@ hadoop jar /Users/christy/Downloads/Projects/BigDataFinalProject/target/BigDataF
 # Count of Accidents Per State Per Year (SecondarySorted with 5 Partitions - Per Year)
 hadoop jar /Users/christy/Downloads/Projects/BigDataFinalProject/target/BigDataFinalProject-1.0-SNAPSHOT.jar com.hadoop.finalProject.Q9.DriverClass /Accidents.csv /Q9_Output &&
 
-# Effects of Wind Speed Per City, State - Recommendation System (RMS)
-hadoop jar /Users/christy/Downloads/Projects/BigDataFinalProject/target/BigDataFinalProject-1.0-SNAPSHOT.jar com.hadoop.finalProject.Q10.DriverClass /Accidents.csv /Q10_Output &&
-
 # Divide file into partitions divided by state [Run on GCP Google DataProc]
-hadoop jar /Users/christy/Downloads/Projects/BigDataFinalProject/target/BigDataFinalProject-1.0-SNAPSHOT.jar com.hadoop.finalProject.Q11.DriverClass /Accidents.csv /State_Data.csv /Q11_Output &&
-
-# Percentage Per US Timezone
-hadoop jar /Users/christy/Downloads/Projects/BigDataFinalProject/target/BigDataFinalProject-1.0-SNAPSHOT.jar com.hadoop.finalProject.Q12.DriverClass /Accidents.csv /Q12_Output &&
+hadoop jar /Users/christy/Downloads/Projects/BigDataFinalProject/target/BigDataFinalProject-1.0-SNAPSHOT.jar com.hadoop.finalProject.Q10.DriverClass /Accidents.csv /State_Data.csv /Q10_Output &&
 
 # Proximity to Traffic Object (Percentage / per all traffic)
-hadoop jar /Users/christy/Downloads/Projects/BigDataFinalProject/target/BigDataFinalProject-1.0-SNAPSHOT.jar com.hadoop.finalProject.Q13.DriverClass /Accidents.csv /Q13_Output
+hadoop jar /Users/christy/Downloads/Projects/BigDataFinalProject/target/BigDataFinalProject-1.0-SNAPSHOT.jar com.hadoop.finalProject.Q11.DriverClass /Accidents.csv /Q11_Output
 
 #-----------------------------------------------#

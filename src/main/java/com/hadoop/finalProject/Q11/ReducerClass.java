@@ -1,44 +1,29 @@
 package com.hadoop.finalProject.Q11;
 
+import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
-public class ReducerClass extends Reducer<Text, Text, Text, Text> {
+public class ReducerClass extends Reducer<Text, IntWritable, Text, Text> {
 
-    private ArrayList<Text> mainList = new ArrayList<Text>();
-    private ArrayList<Text> stateList = new ArrayList<Text>();
+    Text percentage = new Text();
 
     @Override
-    protected void reduce(Text key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
-        mainList.clear();
-        stateList.clear();
-        for (Text text : values) {
-            if (text.charAt(0) == '@') {
-                mainList.add(new Text(text.toString().substring(1)));
-            } else if (text.charAt(0) == '#') {
-                stateList.add(new Text(text.toString().substring(1)));
-            }
+    protected void reduce(Text key, Iterable<IntWritable> values, Context context) throws IOException, InterruptedException {
+
+        int count = 0;
+
+        for(IntWritable v : values) {
+            count += v.get();
         }
-        executeJoinLogic(context);
+
+        int total = 3513617;  // total number of records
+
+        double perc = ((double) count / total) * 100;
+        percentage.set("\t" + String.format("%.2f", perc) + "%");
+
+        context.write(key, percentage);
     }
-
-    public void executeJoinLogic(Context context) throws IOException, InterruptedException {
-        String joinType = context.getConfiguration().get("join.type");
-
-        //INNER JOIN OPERATION
-        if (joinType.equalsIgnoreCase("inner")) {
-            if (!mainList.isEmpty() && !stateList.isEmpty()) {
-                for (Text mainTuple : mainList) {
-                    for (Text stateTuple : stateList) {
-                        context.write(stateTuple, mainTuple);
-                    }
-                }
-            }
-        }
-    }
-
-
 }
