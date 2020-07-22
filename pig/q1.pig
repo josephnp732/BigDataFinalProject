@@ -1,4 +1,4 @@
--- Number of Accidents per Weather_Condition per State
+-- Top 10 Weather Conditions during Accidents in Massachusetts (MA)
 
 DEFINE CSVLoader org.apache.pig.piggybank.storage.CSVLoader();
 
