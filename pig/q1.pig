@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 -- Number of Accidents per Weather_Condition per State
 
@@ -18,3 +19,6 @@ sorted = ORDER concat_count BY cnt DESC;
 top = LIMIT sorted 10;
 
 dump top;
+=======
+DATA = LOAD
+>>>>>>> 13f734fa74a21bcbc8e4d7aa80bc04adbda3e901
