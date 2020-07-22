@@ -5,7 +5,7 @@ MapReduce Question Set:
 3. Number of Accidents Per Day of the Week
 4. Side of the Road Percentage
 5. Number of Accidents Per State
-6. Top 10 Accident Prone States
+6. Top 10 Accident Prone States (Filtering Techniques Top n Filtering Pattern)
 7. State - Cities -> Inverted Index
 8. Average, Min and Max Temperature per Severity
 9. Count of Accidents Per State Per Year (SecondarySorted with 5 Partitions)
@@ -20,3 +20,5 @@ HIVE Question Set:
 
 Pig Question Set:
 
+1. Top 10 Weather Conditions during Accidents in Massachusetts (MA)
+2. Cities in Massachusetts where accidents happen during snowy days (Replicated Inner Join)
