@@ -1,4 +1,4 @@
-# US Road Accidents Data Analysis (2016 - 2020)
+# US Road Accidents Data Analysis (2016 - 2020) - Using Hadoop
 
 #### Final Project for Engineering Big Data Systems - INFO 7250 (Summer 2020)
 
