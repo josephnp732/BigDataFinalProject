@@ -2,6 +2,8 @@
 
 #### Final Project for Engineering Big Data Systems - INFO 7250 (Summer 2020)
 
+<b>Data Source:</b> </t> https://www.kaggle.com/sobhanmoosavi/us-accidents
+
 #### <u>Pre-requisites:</u>
 
 Have JDK 1.8, Hadoop, Hive & Pig installed in your local file system 

@@ -22,7 +22,7 @@ cities = FOREACH data GENERATE ID, City ;
 
 -----------------------------------------------------------------
 
-joined = JOIN cities BY ID, snowy BY ID USING 'replicated';
+joined = JOIN cities BY ID, snowy BY ID;
 
 intermediate = FOREACH joined GENERATE City, State;
 

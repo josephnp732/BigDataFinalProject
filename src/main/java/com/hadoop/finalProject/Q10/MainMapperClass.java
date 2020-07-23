@@ -5,6 +5,7 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 public class MainMapperClass extends Mapper<LongWritable, Text, Text, Text> {
 
@@ -23,21 +24,8 @@ public class MainMapperClass extends Mapper<LongWritable, Text, Text, Text> {
 
         String stateAbbr = tokens[17];
 
-        StringBuilder sB = new StringBuilder();
-
-        sB.append("@");
-
-        for(String token : tokens) {
-            if(first) {
-                first = false;
-            } else {
-                sB.append(",");
-            }
-            sB.append(token);
-        }
-
         outKey.set(stateAbbr);
-        outValue.set(sB.toString());
+        outValue.set("@" + value.toString());
 
         context.write(outKey, outValue);
     }
