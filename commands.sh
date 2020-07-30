@@ -49,7 +49,7 @@ hadoop jar /Users/christy/Downloads/Projects/BigDataFinalProject/target/BigDataF
 # Count of Accidents Per State Per Year (SecondarySorted with 5 Partitions - Per Year)
 hadoop jar /Users/christy/Downloads/Projects/BigDataFinalProject/target/BigDataFinalProject-1.0-SNAPSHOT.jar com.hadoop.finalProject.Q9.DriverClass /Accidents.csv /Q9_Output &&
 
-# Divide file into partitions divided by state [Run on GCP Google DataProc]
+# Divide file into partitions divided by state
 hadoop jar /Users/christy/Downloads/Projects/BigDataFinalProject/target/BigDataFinalProject-1.0-SNAPSHOT.jar com.hadoop.finalProject.Q10.DriverClass /Accidents.csv /State_Data.csv /Q10_Output &&
 
 # Proximity to Traffic Object (Percentage / per all traffic)

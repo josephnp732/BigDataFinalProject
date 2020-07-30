@@ -10,11 +10,11 @@ ma = FILTER inter BY State == 'MA' AND NOT Weather_Condition == '';
 
 grouped = GROUP ma BY CONCAT (State, ' - ', Weather_Condition);
 
-concat_count = FOREACH grouped GENERATE group, COUNT(ma) as cnt;
+concat_count = FOREACH grouped GENERATE group, COUNT(ma) AS cnt;
 
 sorted = ORDER concat_count BY cnt DESC;
 
 top = LIMIT sorted 10;
 
-dump top;
+DUMP top;
 

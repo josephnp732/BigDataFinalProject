@@ -38,6 +38,9 @@ public class DriverClass {
         // Reducer
         job.setReducerClass(ReducerClass.class);
 
+        // Create only 1 reducer
+        job.setNumReduceTasks(1);
+
         job.setOutputKeyClass(IntWritable.class);
         job.setOutputValueClass(TempWritable.class);
 

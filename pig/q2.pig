@@ -28,4 +28,4 @@ intermediate = FOREACH joined GENERATE City, State;
 
 result = DISTINCT intermediate;
 
-dump result;
+DUMP result;
