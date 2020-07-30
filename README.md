@@ -26,7 +26,7 @@ Have JDK 1.8, Hadoop, Hive & Pig installed in your local file system
 
 ### HIVE Question Set: (./hive)
 
-`To execute hive file >> hive -f /Users/christy/Downloads/Projects/BigDataFinalProject/hive/queries.hql` 
+`To execute hive file >> hive -f ./hive/queries.hql` 
 
 1. Number of Accidents per timezone
 2. Number of Accidents per Severity per State (Partitioning)
