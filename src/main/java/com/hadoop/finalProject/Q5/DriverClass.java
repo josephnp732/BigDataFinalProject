@@ -40,6 +40,7 @@ public class DriverClass {
 
         // Reducer
         job.setReducerClass(ReducerClass.class);
+        job.setNumReduceTasks(1);
 
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(IntWritable.class);

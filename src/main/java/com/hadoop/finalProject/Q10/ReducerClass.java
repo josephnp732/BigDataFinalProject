@@ -31,8 +31,8 @@ public class ReducerClass extends Reducer<Text, Text, Text, Text> {
         //INNER JOIN OPERATION
         if (joinType.equalsIgnoreCase("inner")) {
             if (!mainList.isEmpty() && !stateList.isEmpty()) {
-                for (Text mainTuple : mainList) {
-                    for (Text stateTuple : stateList) {
+                for (Text stateTuple : stateList) {
+                    for (Text mainTuple : mainList) {
                         context.write(stateTuple, mainTuple);
                     }
                 }

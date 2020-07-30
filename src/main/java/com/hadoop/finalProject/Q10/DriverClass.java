@@ -33,8 +33,8 @@ public class DriverClass {
         Path outDir = new Path(args[2]);
         FileOutputFormat.setOutputPath(job, outDir);
 
-        // 50 States
-        job.setNumReduceTasks(50);
+        // US States
+        job.setNumReduceTasks(49);
 
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(Text.class);

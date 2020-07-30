@@ -46,6 +46,9 @@ public class DriverClass {
         job.setOutputKeyClass(NullWritable.class);
         job.setOutputValueClass(Text.class);
 
+        // Create only 1 reducer
+        job.setNumReduceTasks(1);
+
         FileSystem fs = FileSystem.get(job.getConfiguration());
         if(fs.exists(outDir)){
             fs.delete(outDir, true);
