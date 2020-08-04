@@ -54,5 +54,3 @@ hadoop jar /Users/christy/Downloads/Projects/BigDataFinalProject/target/BigDataF
 
 # Proximity to Traffic Object (Percentage / per all traffic)
 hadoop jar /Users/christy/Downloads/Projects/BigDataFinalProject/target/BigDataFinalProject-1.0-SNAPSHOT.jar com.hadoop.finalProject.Q11.DriverClass /Accidents.csv /Q11_Output
-
-#-----------------------------------------------#
